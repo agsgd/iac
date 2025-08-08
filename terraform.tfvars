@@ -35,3 +35,7 @@ network_security_group_name = [
     ]
   }
 ]
+virtual_machine_name = "vm"
+virtual_machine_size = "Standard_Bs1"
+admin_username = "azureuser"
+virtual_machine_count = 2

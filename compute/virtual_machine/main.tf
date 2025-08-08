@@ -1,8 +1,9 @@
-resource "azurerm_linux_virtual_machine" "example" {
-  name                  = "example-vm"
-  resource_group_name   = azurerm_resource_group.example.name
-  location              = azurerm_resource_group.example.location
-  size                  = "${var.virtual_machine_size}"
+resource "azurerm_linux_virtual_machine" "ags-virtual_machine" {
+  count                = var.virtual_machine_count
+  name                 = "${var.virtual_machine_name}-${count.index}"
+  resource_group_name   = azurerm_resource_group.ags-resource-group.name
+  location              = azurerm_resource_group.ags-resource-group.location
+  size                  = var.virtual_machine_size
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
@@ -10,7 +11,7 @@ resource "azurerm_linux_virtual_machine" "example" {
   admin_username        = var.admin_username
   disable_password_authentication = true
 
-  network_interface_ids = [azurerm_network_interface.example.id]
+  network_interface_ids = [for nic in azurerm_network_interface.ags-nic : nic.id]
 
   os_disk {
     caching              = "ReadWrite"

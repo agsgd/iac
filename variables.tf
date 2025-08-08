@@ -56,3 +56,21 @@ variable "network_security_group_name" {
     }))
   }))
 }
+# virtual machine specific variables
+variable "virtual_machine_name" {
+  description = "The name of the virtual machine."
+  type        = string
+}
+variable "virtual_machine_size" {
+  description = "The size of the virtual machine."
+  type        = string
+}
+
+variable "admin_username" {
+  description = "The username for the virtual machine administrator."
+  type        = string
+}
+variable "virtual_machine_count" {
+  description = "The number of virtual machines to create."
+  type        = number
+}

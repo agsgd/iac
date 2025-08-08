@@ -17,6 +17,7 @@ module "network" {
   network_interface_name  = var.network_interface_name
   network_security_group_name = var.network_security_group_name
   
+  
     # Ensure the network module depends on the resource group module
   depends_on              = [module.resource_group]
 }

@@ -27,9 +27,11 @@ module "virtual_machine" {
   location              = var.location
   virtual_machine_name  = var.virtual_machine_name
   virtual_machine_size  = var.virtual_machine_size
-  network_interface_ids = module.network.network_interface_ids
+
+ 
   admin_username        = var.admin_username
-  
+
+  virtual_machine_count = var.virtual_machine_count
   
   # Ensure the virtual machine module depends on the network module
   depends_on            = [module.network]

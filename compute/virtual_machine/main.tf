@@ -11,7 +11,9 @@ resource "azurerm_linux_virtual_machine" "ags-virtual_machine" {
   admin_username        = var.admin_username
   disable_password_authentication = true
 
-  network_interface_ids = [for nic in azurerm_network_interface.ags-nic : nic.id]
+  network_interface_ids = [
+    var.network_interface_ids[count.index]
+  ]
 
   os_disk {
     caching              = "ReadWrite"

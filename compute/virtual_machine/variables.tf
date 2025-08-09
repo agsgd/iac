@@ -25,3 +25,8 @@ variable "virtual_machine_count" {
   description = "The number of virtual machines to create."
   type        = number
 }
+variable "network_interface_ids" {
+  description = "List of network interface IDs to associate with the virtual machines."
+  type        = list(string)
+  default     = []
+}

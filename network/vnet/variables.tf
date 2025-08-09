@@ -51,3 +51,9 @@ variable "network_security_group_name" {
     }))
   }))
 }
+
+variable "network_interface_ids" {
+  description = "List of network interface IDs to associate with the virtual machines."
+  type        = list(string)
+  default     = []
+}

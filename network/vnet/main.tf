@@ -15,14 +15,14 @@ resource "azurerm_subnet" "ags-subnet" {
 
 resource "azurerm_public_ip" "ags-public-ip" {
   count               = var.public_ip_name_count
-  name                = "${var.public_ip_name}${count.index}"
+  name                = "${var.public_ip_name}${count.index+1}"
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
 }
 resource "azurerm_network_interface" "ags-nic" {
   count               = var.network_interface_count
-  name                = "${var.network_interface_name}${count.index}"
+  name                = "${var.network_interface_name}${count.index+1}"
   location            = var.location
   resource_group_name = var.resource_group_name
 
